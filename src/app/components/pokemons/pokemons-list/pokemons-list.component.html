@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="mt-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <h2 class="text-white ">
+                <strong>Pokemons</strong>
+            </h2>
+            <div>
+                <button class="btn btn-dark px-4 me-2" (click)="changeDisplay('grid')">
+                    <i class="fa fa-table"></i>
+                </button>
+                <button class="btn btn-dark px-4" (click)="changeDisplay('list')">
+                    <i class="fa fa-list"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <app-pokemons-search></app-pokemons-search>
+    <div class="mt-4">
+        <div class="row">
+            @if(display === 'grid'){
+                @for (pokemon of pokemons.results; track $index) {
+                    <div class="col-lg-4 mb-4">
+                        <div class="w-100 bg-dark pokemon-card shadow rounded p-4 cursor-pointer" role="button" [routerLink]="[getPokemonId(pokemon.url)]">
+                            <img [src]="pokemon.image" alt="" srcset="" class="w-100">
+                            <h2 class="mt-2 text-warning">
+                                <strong>
+                                    {{ pokemon.name }}
+                                </strong>
+                            </h2>
+                        </div>
+                    </div>
+                }
+            }
+            @else if (display === 'list') {
+                @for (pokemon of pokemons.results; track $index) {
+                    <div class="col-lg-12 mb-4">
+                        <div class="w-100 pokemon-card bg-dark shadow rounded p-2">
+                            <div class="row">
+                                <div class="col-lg-12 d-flex align-items-center">
+                                    <img [src]="pokemon.image" alt="" srcset="" class="img-pokemon me-4">
+                                    <h2 class="mt-2 text-warning">
+                                        <strong>
+                                            {{ pokemon.name }}
+                                        </strong>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+            <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center justify-content-start mt-4 mb-4">
+                    <button class="btn btn-dark btn-pagination me-2 px-4 py-3" (click)="getPokemons(pokemons.previous)" [disabled]="!pokemons.previous">
+                        <strong>
+                            Previous
+                        </strong>
+                    </button>
+                    <button class="btn btn-dark btn-pagination px-4 py-3" (click)="getPokemons(pokemons.next)" [disabled]="!pokemons.next">
+                        <strong>
+                            Next
+                        </strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

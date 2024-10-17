@@ -1,0 +1,5 @@
+.pokemon-card:hover{
+    cursor: pointer;
+    transition: background 3s ease 0.5s; /* Transition starts after 0.5 seconds and lasts 3 seconds */
+    background: linear-gradient(45deg, #141E30, #243B55) !important; /* Dark mode gradient */
+}

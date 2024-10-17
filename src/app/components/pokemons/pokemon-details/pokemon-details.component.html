@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="mt-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <button class="btn btn-dark btn-pagination px-4 py-3" [routerLink]="['']">
+                <strong>
+                    <i class="fa fa-chevron-left"></i>
+                </strong>
+            </button>
+        </div>
+    </div>
+    <div class="mt-4">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="w-100 bg-dark pokemon-card shadow rounded p-4 cursor-pointer" role="button">
+                    <img [src]="pokemon.sprites.other.home.front_default" alt="" srcset="" class="w-100">
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <h2 class="mt-2 text-warning">
+                    <strong>
+                        {{ pokemon.name }}
+                    </strong>
+                </h2>
+                <ul class="list-group bg-dark shadow">
+                    <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center py-5 px-3">
+                      <strong >
+                        Pokemon Id
+                      </strong>
+                      <span class="badge bg-warning text-dark rounded-pill">
+                        {{ pokemon.id }}
+                      </span>
+                    </li>
+                    <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center py-5 px-3">
+                        <strong>
+                            Pokemon Weight
+                        </strong>
+                        <span class="badge bg-warning text-dark rounded-pill">
+                          {{ pokemon.weight }}
+                        </span>
+                    </li>
+                    <li class="list-group-item bg-dark text-white py-5 px-3">
+                        <strong>
+                            Pokemon Types
+                        </strong> <br>
+                        
+                        <div class="mt-4">
+                            @for (types of pokemon.types; track $index) {
+                                <span class="badge bg-warning text-dark rounded-pill me-2">
+                                    {{ types.type.name }}
+                                </span>
+                              }
+                        </div>
+                        
+                    </li>
+                  </ul>
+                  
+            </div>
+        </div>
+    </div>
+</div>
